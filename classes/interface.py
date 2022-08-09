@@ -8,7 +8,8 @@ class Interface():
     def __del__(self):
         pass
 
-    def render(self, field, coords, color):
+    def render(self, game, coords, color):
+        field = game.get_field()
         if(name == "nt"):
             system("cls")
         else:
@@ -48,4 +49,5 @@ class Interface():
                         prnt = prnt + (Back.CYAN + " " * 2)  
             prnt = prnt + (Back.WHITE + " " * 2 + Style.RESET_ALL + "\n")
         prnt = prnt + (Back.WHITE + " " * (len(field[0]) * 2 + 4)) + "\n" + Style.RESET_ALL
+        prnt = prnt + "Score: " + str(game.get_score()) + "\n" + "Level: " + str(game.get_level()) + "\n" + "Lines: " + str(game.get_lines())
         print(prnt)
