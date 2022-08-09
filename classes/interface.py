@@ -47,5 +47,5 @@ class Interface():
                     elif field[y][x] == 6:
                         prnt = prnt + (Back.CYAN + " " * 2)  
             prnt = prnt + (Back.WHITE + " " * 2 + Style.RESET_ALL + "\n")
-        prnt = prnt + (Back.WHITE + " " * (len(field[0]) * 2 + 4)) + "\n"
+        prnt = prnt + (Back.WHITE + " " * (len(field[0]) * 2 + 4)) + "\n" + Style.RESET_ALL
         print(prnt)

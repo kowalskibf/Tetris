@@ -1,3 +1,6 @@
+two_rotations = [1, 4, 5]
+four_rotations = [3, 6, 7]
+
 class Block:
     def __init__(self, variant, rotation, color, x, y):
         self.set_variant(variant)
@@ -94,36 +97,30 @@ class Block:
             self.__y = y
 
     def increment_rotation(self):
-        two_rotations = [1, 4, 5]
-        four_rotations = [3, 6, 7]
         if self.__variant in two_rotations:
-            if self.__variant == 1:
+            if self.__rotation == 1:
                 self.__rotation = 2
             else:
                 self.__rotation = 1
         elif self.__variant in four_rotations:
-            if self.__variant <= 3:
+            if self.__rotation <= 3:
                 self.__rotation += 1
             else:
                 self.__rotation = 1
 
     def decrement_rotation(self):
-        two_rotations = [1, 4, 5]
-        four_rotations = [3, 6, 7]
         if self.__variant in two_rotations:
-            if self.__variant == 2:
+            if self.__rotation == 2:
                 self.__rotation = 1
             else:
                 self.__rotation = 2
         elif self.__variant in four_rotations:
-            if self.__variant >= 2:
+            if self.__rotation >= 2:
                 self.__rotation -= 1
             else:
                 self.__rotation = 4
 
     def is_able_to_rotate(self, field):
-        two_rotations = [1, 4, 5]
-        four_rotations = [3, 6, 7]
         if self.__variant in two_rotations or self.__variant in four_rotations:
             self.increment_rotation()
             for coord in self.get_coords():
@@ -135,7 +132,7 @@ class Block:
         return False
 
     def rotate(self, field):
-        if self.is_able_to_rotate(self, field):
+        if self.is_able_to_rotate(field):
             self.increment_rotation()
             return True
         return False
@@ -165,8 +162,11 @@ class Block:
         return False
 
     def max_fall(self, field):
+        at_least_one = False
         while self.is_able_to_fall(field):
             self.__y += 1
+            at_least_one = True
+        return at_least_one
 
     def move_left(self, field):
         if self.is_able_to_move_left(field):
