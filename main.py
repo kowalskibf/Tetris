@@ -1,4 +1,3 @@
-from tkinter import NE
 import keyboard
 from time import sleep
 from random import randint
