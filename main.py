@@ -21,11 +21,16 @@ def main():
         if not block.fall(game.get_field()):
             game.solidify_block(block.get_coords(), block.get_color())
             interface.render(game.get_field(), block.get_coords(), block.get_color())
+            if game.remove_rows():
+                sleep(1)
+                interface.render(game.get_field(), block.get_coords(), block.get_color())
             del block
             block = Block(nextblock.get_variant(), nextblock.get_rotation(), nextblock.get_color(), 4, 0)
             keyboard.on_press(controls.on_key_press_out(block, nextblock, game, interface))
             del nextblock
             nextblock = Nextblock(randint(1, 7), 1, randint(1, 6))
+            if not game.check_running(block.get_coords()):
+                running = False
         interface.render(game.get_field(), block.get_coords(), block.get_color())
 
 if __name__ == "__main__":

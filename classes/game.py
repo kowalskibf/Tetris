@@ -35,8 +35,10 @@ class Game:
             self.__field[coord[1]][coord[0]] = color
 
     def remove_rows(self):
+        any_row_to_be_removed = False
         y = self.__size_y - 1
         while(y >= 0):
+            any_row_to_be_removed = True
             row_to_be_removed = True
             for x in range(self.__size_x):
                 if(self.__field[y][x] == 0):
@@ -54,3 +56,10 @@ class Game:
                     self.__field[0][x] = 0
                 y += 1
             y -= 1
+        return any_row_to_be_removed
+
+    def check_running(self, coords):
+        for coord in coords:
+            if self.__field[coord[1]][coord[0]] != 0:
+                return False
+        return True

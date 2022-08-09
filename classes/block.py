@@ -65,7 +65,7 @@ class Block:
                 return [(self.__x, self.__y - 1), (self.__x + 1, self.__y - 1), (self.__x, self.__y), (self.__x, self.__y + 1)]
         elif self.__variant == 7: # L
             if self.__rotation == 1:
-                return [(self.__x - 1, self.__y), (self.__x, self.__y), (self.__x + 1, self.__y), (self.__x + 1, self.__y + 1)]
+                return [(self.__x - 1, self.__y), (self.__x, self.__y), (self.__x + 1, self.__y), (self.__x - 1, self.__y + 1)]
             elif self.__rotation == 2:
                 return [(self.__x - 1, self.__y - 1), (self.__x, self.__y - 1), (self.__x, self.__y), (self.__x, self.__y + 1)]
             elif self.__rotation == 3:
