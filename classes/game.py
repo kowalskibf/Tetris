@@ -17,11 +17,8 @@ class Game:
     def get_size_y(self):
         return self.__size_y
 
-    def get_field(self, x=-1, y=-1):
-        if(x == -1 and y == -1):
-            return self.__field
-        else:
-            return self.__field[y][x]
+    def get_field(self):
+        return self.__field
 
     def set_size_x(self, size_x):
         if(type(size_x) is int):
@@ -33,8 +30,9 @@ class Game:
             if(size_y >= 4):
                 self.__size_y = size_y
 
-    def add_solid(self, coords):
-        pass
+    def solidify_block(self, coords, color):
+        for coord in coords:
+            self.__field[coord[1]][coord[0]] = color
 
     def remove_rows(self):
         y = self.__size_y - 1
